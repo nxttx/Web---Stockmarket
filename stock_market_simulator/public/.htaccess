@@ -1,0 +1,3 @@
+# make all visits use index.html without changing the URL
+RewriteRule ^(.*)$ /index.html [L]
+

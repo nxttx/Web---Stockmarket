@@ -1,0 +1,39 @@
+footer{
+
+
+  height: 70px;
+  background-color: #000;
+  color: #fff;
+  padding: 20px 0;
+  .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .links{
+      display: flex;
+      .link{
+        margin-right: 20px;
+        a{
+          color: #fff;
+          text-decoration: none;
+          &:hover{
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    .social{
+      display: flex;
+      .social-link{
+        margin-right: 20px;
+        a{
+          color: #fff;
+          text-decoration: none;
+          &:hover{
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
