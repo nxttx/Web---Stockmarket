@@ -12,7 +12,7 @@ import {buyOrSellStock} from '../core/updateStocks';
 import "./Stocks.scss";
 
 /**
- * Display stock information with charts 
+ * Display stock information with chartjs 
  *
  * @author Robert Boudewijn, Swishfox
  * @date 2022/11/27
