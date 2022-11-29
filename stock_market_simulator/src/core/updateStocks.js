@@ -77,13 +77,52 @@ export function updateStocks(stocks) {
     return stocks;
 }
 
+// calculate change of stockprice when buying or selling a stock
+/**
+ * @param {Stock} symbol - Symbol of the stock to calculate delta price
+ * @param {number} amount - The amount of stocks bought/sold
+ * @returns {deltaPrice} change of stockprice when buying or selling a stock
+ * @author Robert Boudewijn, code moved by Swishfox
+ * @date 2022/11/29
+ * @export
+ * @throws {Error} if amount is not a number
+ */
+export function priceChangeWhenStockTraded(symbol, amount) {
+    if (typeof amount !== "number") {
+        throw new Error("amount is not a number");
+    }
+    // get stock
+    let stock = getStocks(symbol);
+    let price = stock.price;
+    
+    // increase or decrease price change based on risk factor
+    switch (riskFactor) {
+        case "low":
+            deltaPrice = Number(price * 0.005) * amount;
+            break;
+        case "medium":
+            deltaPrice = Number(price * 0.007) * amount;
+      	    break;
+        case "high":
+            deltaPrice = Number(price * 0.01) * amount;
+            break;
+        default:
+            // medium
+            deltaPrice = Number(price * 0.007) * amount;
+            break;
+    }
+    // round to 2 decimals
+    price = Math.round(Number(price) * 100) / 100;
+    return deltaPrice
+}
+
 // buy x amount of stocks and increase or decrease the price of the stock
 /**
  * Buys or sells  x amount of stocks and increases or decreases the price of the stock
  * @param {Stock} symbol - Symbol of the stock to buy
  * @param {number} amount - The amount of stocks to buy
  * @returns {Stock} stock
- * @author Robert Boudewijn
+ * @author Robert Boudewijn, edited by Swishfox
  * @date 2022/11/26
  * @export
  * @throws {Error} if amount is not a number
@@ -101,25 +140,8 @@ export function buyOrSellStock(symbol, amount) {
     let stockSymbol = stock.symbol;
     let name = stock.name;
 
-    // increase or decrease price based on risk factor
-    switch (riskFactor) {
-        case "low":
-            price = Number(price) + (Number(price * 0.005) * amount);
-            break;
-        case "medium":
-            price = Number(price) + (Number(price * 0.007) * amount);
-      	    break;
-        case "high":
-            price = Number(price) + (Number(price * 0.01) * amount);
-            break;
-        default:
-            // medium
-            price = Number(price) + (Number(price * 0.007) * amount);
-            break;
-    }
-    
-    // round to 2 decimals
-    price = Math.round(Number(price) * 100) / 100;
+    // increase or decrease price (based on risk factor)
+    price += priceChangeWhenStockTraded(symbol, amount)
 
     // get price, change and changePercent for history
     let change = Number(price) - Number(stock.price);
