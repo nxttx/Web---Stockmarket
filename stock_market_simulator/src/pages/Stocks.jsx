@@ -12,9 +12,9 @@ import {buyOrSellStock} from '../core/updateStocks';
 import "./Stocks.scss";
 
 /**
- * Display stock information with chartjs 
+ * Display stock information with charts 
  *
- * @author Robert Boudewijn
+ * @author Robert Boudewijn, Swishfox
  * @date 2022/11/27
  * @param {*} props
  * @return {*} 
@@ -81,7 +81,8 @@ function Stocks(props) {
             <div className="stock-buy-left">
               <h1>Buy {stock.symbol}</h1>
               <h2>Current price: &euro; {stock.price}</h2>
-              <h2>Total: &euro; {stock.price * amount }</h2>
+              // average of old and new price
+              <h2>Total: &euro; {((stock.price) + 1/2 * priceChangeWhenStockTraded(symbol, amount)) * amount }</h2>
             </div>
             <div className="stock-buy-right">
               {/* amount */}
