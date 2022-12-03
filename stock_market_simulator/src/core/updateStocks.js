@@ -38,8 +38,8 @@ export function updateStock(stock) {
     // round to 2 decimals
     change = Math.round(change * 100) / 100;
 
-    // if price is 0 then only positive changes are allowed else make it random
-    if (price <= 0) {
+    // if price is 1 then only positive changes are allowed else make it random
+    if (price <= 1) {
         change = Math.abs(change);
     } else {
       // set change positive or negative
@@ -111,6 +111,12 @@ export function priceChangeWhenStockTraded(symbol, amount) {
             deltaPrice = Number(price * 0.007) * amount;
             break;
     }
+
+    // check if price is negative
+    if( price < 1) {
+        price = 1;
+    }
+
     // round to 2 decimals
     price = Math.round(Number(price) * 100) / 100;
     return deltaPrice
