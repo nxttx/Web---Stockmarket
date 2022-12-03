@@ -77,11 +77,12 @@ export function updateStocks(stocks) {
     return stocks;
 }
 
-// calculate change of stockprice when buying or selling a stock
 /**
+ * calculate change of stockprice when buying or selling a stock
+ * 
  * @param {Stock} symbol - Symbol of the stock to calculate delta price
  * @param {number} amount - The amount of stocks bought/sold
- * @returns {deltaPrice} change of stockprice when buying or selling a stock
+ * @returns {number} change of stockprice when buying or selling a stock
  * @author Robert Boudewijn, code moved by Swishfox
  * @date 2022/11/29
  * @export
@@ -94,6 +95,8 @@ export function priceChangeWhenStockTraded(symbol, amount) {
     // get stock
     let stock = getStocks(symbol);
     let price = stock.price;
+    let riskFactor = stock.riskFactor;
+    let deltaPrice = 0;
     
     // increase or decrease price change based on risk factor
     switch (riskFactor) {
@@ -118,7 +121,7 @@ export function priceChangeWhenStockTraded(symbol, amount) {
     }
 
     // round to 2 decimals
-    price = Math.round(Number(price) * 100) / 100;
+    deltaPrice = Math.round(Number(deltaPrice) * 100) / 100;
     return deltaPrice
 }
 
@@ -140,14 +143,16 @@ export function buyOrSellStock(symbol, amount) {
     // get stock
     let stock = getStocks(symbol);
 
-    let price = stock.price;
+    let price = Number(stock.price);
     let riskFactor = stock.riskFactor;
     let history = stock.history;
     let stockSymbol = stock.symbol;
     let name = stock.name;
 
     // increase or decrease price (based on risk factor)
-    price += priceChangeWhenStockTraded(symbol, amount)
+    price += Number(priceChangeWhenStockTraded(symbol, amount))
+
+    console.log(typeof price);
 
     // get price, change and changePercent for history
     let change = Number(price) - Number(stock.price);

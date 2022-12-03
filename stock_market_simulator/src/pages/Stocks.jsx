@@ -6,7 +6,7 @@ import Chart from 'chart.js/auto';
 import { Line } from 'react-chartjs-2';
 
 import {getStocks} from '../DataAccessLayer/stockDAO';
-import {buyOrSellStock} from '../core/updateStocks';
+import {buyOrSellStock, priceChangeWhenStockTraded} from '../core/updateStocks';
 
 
 import "./Stocks.scss";
@@ -14,7 +14,8 @@ import "./Stocks.scss";
 /**
  * Display stock information with chartjs 
  *
- * @author Robert Boudewijn, Swishfox
+ * @author Robert Boudewijn
+ * @editor Swishfox
  * @date 2022/11/27
  * @param {*} props
  * @return {*} 
@@ -38,6 +39,8 @@ function Stocks(props) {
     props.setRefresh(props.refresh+ 1);
 
   }
+
+  let stockConsumerPrice = ((Number(stock.price)) + 0.5 * priceChangeWhenStockTraded(symbol, Number(amount))).toFixed(2);
 
   // invert the history so the chart starts at the oldest data without changing the data
   let history = stock.history.slice();
@@ -80,9 +83,9 @@ function Stocks(props) {
           <div className="stock-buy">
             <div className="stock-buy-left">
               <h1>Buy {stock.symbol}</h1>
-              <h2>Current price: &euro; {stock.price}</h2>
-              // average of old and new price
-              <h2>Total: &euro; {((stock.price) + 1/2 * priceChangeWhenStockTraded(symbol, amount)) * amount }</h2>
+              <h2>Current price: &euro; {stockConsumerPrice}</h2>
+              {/* // average of old and new price */}
+              <h2>Total: &euro; {stockConsumerPrice * amount }</h2>
             </div>
             <div className="stock-buy-right">
               {/* amount */}
