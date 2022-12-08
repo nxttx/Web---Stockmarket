@@ -32,10 +32,10 @@ function Home(props) {
       return data;
     }
     let stocksData = fetchData();
+    stocksData = stocksData.slice();
 
-    function updateGlobalChart(stocks) {
-      let tempHistory = stocks?.map((stock) => stock.history.reverse().slice(-20));
-      console.log(tempHistory);
+    function updateGlobalChart(localStocks) {
+      let tempHistory = localStocks?.map((stock) => stock.history.reverse().slice(-20));
 
       // create a global change array
       let tempGlobalChange = [];
@@ -89,7 +89,7 @@ function Home(props) {
                 <td><Link to={`/stocks/${stock.symbol}`}>{stock.symbol}</Link></td>
                 <td><Link to={`/stocks/${stock.symbol}`}>{stock.name}</Link></td>
                 <td>{stock.price}</td>
-                <td className={stock.history[0].change > 0 ? 'increase' : 'decrease'}>{stock.history[0].changePercent} %</td>
+                <td className={stock.history[stock.history.length-1].change > 0 ? 'increase' : 'decrease'}>{stock.history[stock.history.length-1].changePercent} %</td>
               </tr>;
             })}
           </tbody>
