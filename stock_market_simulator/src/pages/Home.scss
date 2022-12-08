@@ -39,5 +39,55 @@ main{
     }
   }
 
-  
+  .card {
+    margin-top: 4rem;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    .card-header {
+      display: flex;
+      flex-direction: column;
+      // margin-bottom: 2rem;
+      h2 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 0rem;
+      }
+      h3 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: #999;
+      }
+    }
+    .card-body {
+      line-height: 1.45;
+
+      .chart {
+        margin: 0 2rem;
+      }
+      .changeInfo{
+        margin: 0 2rem;
+        p {
+          font-weight: 400;
+          margin-bottom: 1rem;
+          font-size: 1.1rem;
+          
+          span {
+            font-weight: 700;
+          }
+        }
+        ul {
+          li {
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            span {
+              font-weight: 700;
+            }
+          }
+        }
+      }
+    }
+  }
 }

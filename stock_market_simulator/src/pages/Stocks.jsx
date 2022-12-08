@@ -1,7 +1,8 @@
 import React, {useState} from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons'
+// eslint-disable-next-line no-unused-vars
 import Chart from 'chart.js/auto';
 import { Line } from 'react-chartjs-2';
 

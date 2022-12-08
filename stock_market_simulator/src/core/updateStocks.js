@@ -57,7 +57,7 @@ export function updateStock(stock) {
 
     // update history with new price set to 2 decimals and change and changePercent set to 1 decimal 
     // set as first element in array
-    history.unshift(new History(price.toFixed(2), change.toFixed(1), changePercent.toFixed(1)));
+    history.unshift(new History(price.toFixed(2), change.toFixed(2), changePercent.toFixed(2)));
     
     // update stock
     stock = new Stock(symbol, name, riskFactor, price.toFixed(2), history);

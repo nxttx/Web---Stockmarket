@@ -51,3 +51,132 @@ code {
     max-width: 1280px;
   }
 }
+
+
+
+// flexboxes and sizes 
+// ------------------------------------
+
+// flexbox
+.flex {
+  display: flex;
+}
+
+.flex--center {
+  justify-content: center;
+}
+
+.flex--space-between {
+  justify-content: space-between;
+}
+
+.flex--space-around {
+  justify-content: space-around;
+}
+
+.flex--align-center {
+  align-items: center;
+}
+
+.flex--align-end {
+  align-items: flex-end;
+}
+
+.flex--align-start {
+  align-items: flex-start;
+}
+
+.flex--column {
+  flex-direction: column;
+}
+
+.flex--column-reverse {
+  flex-direction: column-reverse;
+}
+
+.flex--row {
+  flex-direction: row;
+}
+
+.flex--row-reverse {
+  flex-direction: row-reverse;
+}
+
+.flex--wrap {
+  flex-wrap: wrap;
+}
+
+.flex--wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
+
+.flex--no-wrap {
+  flex-wrap: nowrap;
+}
+
+.flex--center-center {
+  justify-content: center;
+  align-items: center;
+}
+
+// sizes
+.col-1 {
+  flex: 0 0 8.333333%;
+  max-width: 8.333333%;
+}
+
+.col-2 {
+  flex: 0 0 16.666667%;
+  max-width: 16.666667%;
+}
+
+.col-3 {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+.col-4 {
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+}
+
+.col-5 {
+  flex: 0 0 41.666667%;
+  max-width: 41.666667%;
+}
+
+.col-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.col-7 {
+  flex: 0 0 58.333333%;
+  max-width: 58.333333%;
+}
+
+.col-8 {
+  flex: 0 0 66.666667%;
+  max-width: 66.666667%;
+}
+
+.col-9 {
+  flex: 0 0 75%;
+  max-width: 75%;
+}
+
+.col-10 {
+  flex: 0 0 83.333333%;
+  max-width: 83.333333%;
+}
+
+.col-11 {
+  flex: 0 0 91.666667%;
+  max-width: 91.666667%;
+} 
+
+.col-12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
